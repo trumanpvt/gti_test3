@@ -21,7 +21,7 @@ const cardSlice = createSlice({
   },
   extraReducers(builder) {
     builder
-      .addCase(fetchProduct.pending, (state, action) => {
+      .addCase(fetchProduct.pending, (state) => {
         state.status = "loading";
       })
       .addCase(fetchProduct.fulfilled, (state, action) => {
@@ -30,7 +30,7 @@ const cardSlice = createSlice({
       })
       .addCase(fetchProduct.rejected, (state, action) => {
         state.status = "failed";
-        state.error = action.error.message;
+        state.error = action?.error.message;
       });
   },
 });
