@@ -1,7 +1,14 @@
 import styles from "./card.module.scss";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { changeParam, changePeriod, fetchProduct } from "./cardSlice";
+import {
+  changeParam,
+  changePeriod,
+  fetchProduct,
+  selectGraphParam,
+  selectGraphPeriod,
+  selectProduct,
+  selectProductFetchStatus,
+} from "./cardSlice";
 import {
   graphData,
   paramsList,
@@ -17,13 +24,17 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 const Card = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // period и param проще сделать через useState, но все равно уже используем Redux, почему бы и не в нем.
   // Как бонус, если в теории переходить по разным продуктам то сохранятся настройки графика
-  const { product, period, param, status } = useSelector((state) => state.card);
+  const product = useAppSelector(selectProduct);
+  const period = useAppSelector(selectGraphPeriod);
+  const param = useAppSelector(selectGraphParam);
+  const status = useAppSelector(selectProductFetchStatus);
 
   useEffect(() => {
     if (status === "idle") {
@@ -88,6 +99,14 @@ const Card = () => {
 
   const { isin, issuer, issuer_full, currency, price, maturity_date } = product;
 
+  if (status !== "succeeded") {
+    return (
+      <div className={styles.card}>
+        <h1 className={styles.header}>Loading product data...</h1>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.card}>
       <h1 className={styles.header}>
@@ -98,7 +117,7 @@ const Card = () => {
       <div className={styles.info}>
         <div className={styles.info__isin}>{isin}</div>
         <div>{issuer_full},</div>
-        <div>till {maturity_date}</div>
+        <div> till {maturity_date}</div>
       </div>
       <div>
         {periodButtons.map(renderButton)}

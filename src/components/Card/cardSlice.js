@@ -45,4 +45,9 @@ export const fetchProduct = createAsyncThunk(
   },
 );
 
+export const selectProduct = (state) => state.card.product;
+export const selectProductFetchStatus = (state) => state.card.status;
+export const selectGraphParam = (state) => state.card.param;
+export const selectGraphPeriod = (state) => state.card.period;
+
 export default cardSlice.reducer;
