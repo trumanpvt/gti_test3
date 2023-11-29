@@ -1,0 +1,14 @@
+{
+  "SU26238RMFS4": {
+    "isin": "SU26238RMFS4",
+    "issuer": "Министерство финансов Российской Федерации",
+    "name": "ОФЗ-ПД 26238 15/05/2041",
+    "full_name": "ОФЗ 26238",
+    "currency": "RUR",
+    "price": 67.2950,
+    "yield": 11.81,
+    "coupon": 35.4,
+    "maturity_date": "15.05.2041",
+    "coupon_payment_date": "06.12.2023"
+  }
+}
