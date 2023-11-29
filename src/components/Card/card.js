@@ -23,15 +23,13 @@ const Card = () => {
 
   // period и param проще сделать через useState, но все равно уже используем Redux, почему бы и не в нем.
   // Как бонус, если в теории переходить по разным продуктам то сохранятся настройки графика
-  const { product, period, param } = useSelector((state) => state.card);
-
-  const productStatus = useSelector((state) => state.card.status);
+  const { product, period, param, status } = useSelector((state) => state.card);
 
   useEffect(() => {
-    if (productStatus === "idle") {
+    if (status === "idle") {
       dispatch(fetchProduct({ isin: testIsin }));
     }
-  }, [productStatus, dispatch]);
+  }, [status, dispatch]);
 
   const renderButton = (button) => {
     return (
@@ -50,9 +48,10 @@ const Card = () => {
       <select
         onChange={(e) => dispatch(changeParam(e.target.value))}
         className={styles.select}
+        defaultValue="Yield"
       >
         {paramsList.map((item) => (
-          <option key={item} value={item} selected={item === param}>
+          <option key={item} value={item}>
             {item}
           </option>
         ))}
