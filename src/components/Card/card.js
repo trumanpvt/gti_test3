@@ -20,6 +20,9 @@ import {
 
 const Card = () => {
   const dispatch = useDispatch();
+
+  // period и param проще сделать через useState, но все равно уже используем Redux, почему бы и не в нем.
+  // Как бонус, если в теории переходить по разным продуктам то сохранятся настройки графика
   const { product, period, param } = useSelector((state) => state.card);
 
   const productStatus = useSelector((state) => state.card.status);
