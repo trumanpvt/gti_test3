@@ -58,6 +58,8 @@ const Card = () => {
   };
 
   const getGraphData = () => {
+    // фильтрация по количеству недель, считаю 1 элемент массива данных за 1 неделю,
+    // месяц за 4 недели, квартал за 12, год за 48, чтобы не усложнять задачу, и данные все равно рандомные
     switch (period) {
       case "Week":
         return graphData.slice(-1);
@@ -93,7 +95,7 @@ const Card = () => {
       </h1>
       <div className={styles.info}>
         <div className={styles.info__isin}>{isin}</div>
-        <div>{issuer_full}, </div>
+        <div>{issuer_full},</div>
         <div>till {maturity_date}</div>
       </div>
       <div>
