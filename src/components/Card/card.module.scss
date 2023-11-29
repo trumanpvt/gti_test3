@@ -1,0 +1,34 @@
+.card {
+  padding: 20px;
+  border: 1px solid #000;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+
+  &__issuer {
+    max-width: 300px;
+  }
+
+  &__currency {
+    margin-left: 10px;
+    font-weight: normal;
+  }
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #000;
+
+  &__isin {
+    width: 100%;
+  }
+}
+
+.select{
+  margin-left: 10px;
+}
