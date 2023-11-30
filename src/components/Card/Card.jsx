@@ -97,15 +97,15 @@ const Card = () => {
     }
   };
 
-  const { isin, issuer, issuer_full, currency, price, maturity_date } = product;
-
   if (status !== "succeeded") {
     return (
       <div className={styles.card}>
-        <h1 className={styles.header}>Loading product data...</h1>
+        <h1 className={styles.header}>Fetching product...</h1>
       </div>
     );
   }
+
+  const { isin, issuer, issuer_full, currency, price, maturity_date } = product;
 
   return (
     <div className={styles.card}>

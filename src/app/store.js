@@ -1,6 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import cardSlice from "../components/Card/cardSlice";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import cardReducer from "../components/Card/cardSlice";
 
-export default configureStore({
-  reducer: { card: cardSlice },
+const rootReducer = combineReducers({
+  card: cardReducer,
 });
+
+export const setupStore = (preloadedState) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
