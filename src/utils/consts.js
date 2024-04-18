@@ -5,6 +5,7 @@ export const testIsin = "RU000A1059R0";
 export const periodButtons = ["Week", "Month", "Quarter", "Year", "Max"];
 
 export const paramsList = ["Yield", "Spread", "Price"];
+
 export const graphData = [
   {
     name: "02.02",

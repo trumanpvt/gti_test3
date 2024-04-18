@@ -1,4 +1,4 @@
-# sov_test3
+# gti_test3
 
 ## Task 3
 
